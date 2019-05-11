@@ -1,11 +1,13 @@
 var express = require('express');
 var app = express();
+var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser');
 
 var userRoute = require('./routes/users.route')
 
 var port = 3000;
 
+app.use(cookieParser())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
