@@ -1,0 +1,9 @@
+extends ../layout/layout.pug
+
+block content
+    h1 User create
+
+    form(action="/user/create", method="POST")
+        label Name 
+        input(type="text" name="name")
+        button create

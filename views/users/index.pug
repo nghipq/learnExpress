@@ -1,0 +1,13 @@
+extends ../layout/layout.pug
+
+block content
+    h1 users
+    a(href="/user/create") create
+    form(action="/user/search", method="GET")
+        input(value=q type="text", name="q")
+        button search
+    ul
+    each user in users
+        li
+            span= user.name
+            a(href="/user/" + user.id) view 
