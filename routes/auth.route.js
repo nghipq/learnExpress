@@ -5,5 +5,6 @@ var controller = require('../controller/auth.controller')
 var validate = require('../middleware/auth.valicate')
 
 router.get('/login', controller.login);
+router.post('/login', controller.postLogin);
 
 module.exports = router

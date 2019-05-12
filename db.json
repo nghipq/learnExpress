@@ -2,7 +2,9 @@
   "users": [
     {
       "name": "Minh",
-      "id": "dxTTJ7wwp"
+      "id": "dxTTJ7wwp",
+      "email": "minh@gmail.com",
+      "password": "12345"
     },
     {
       "name": "Nghi",
