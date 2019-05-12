@@ -3,7 +3,8 @@ var app = express();
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser');
 
-var userRoute = require('./routes/users.route')
+var userRoute = require('./routes/users.route');
+var authRoute = require('./routes/auth.route');
 
 var port = 3000;
 
@@ -17,6 +18,8 @@ app.set('view engine', 'pug');
 app.get('/', (req, res) => res.render('index', {
     name: "Nghi"
 }));
+
+app.use('/auth', authRoute)
 
 app.use('/user', userRoute);
 
