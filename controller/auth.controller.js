@@ -1,6 +1,6 @@
 var db = require('../db');
 var shortid = require('shortid');
-var md5 = require('md5')
+var md5 = require('md5');
 
 module.exports.login = (req, res) => res.render('auth/login');
 module.exports.postLogin = function(req, res) {
@@ -26,6 +26,8 @@ module.exports.postLogin = function(req, res) {
         })
         return;
     }
-    res.cookie('userId', user.id)
+    res.cookie('userId', user.id, {
+        signed: true
+    })
     res.redirect('/user')
 }

@@ -10,16 +10,14 @@ var authMiddleware = require('./middleware/auth.middleware')
 
 var port = 3000;
 
-app.use(cookieParser())
+app.use(cookieParser('fcfxxddzsbkbbvdzzsk'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('views', './views');
 app.set('view engine', 'pug');
 
-app.get('/', (req, res) => res.render('index', {
-    name: "Nghi"
-}));
+app.get('/', (req, res) => res.render('index'));
 
 app.use('/auth', authRoute)
 
