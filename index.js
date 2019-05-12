@@ -1,3 +1,5 @@
+var dotenv = require('dotenv').config();
+
 var express = require('express');
 var app = express();
 var cookieParser = require('cookie-parser')
@@ -10,7 +12,7 @@ var authMiddleware = require('./middleware/auth.middleware')
 
 var port = 3000;
 
-app.use(cookieParser('fcfxxddzsbkbbvdzzsk'))
+app.use(cookieParser(process.env.SESSON_SECRET))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
