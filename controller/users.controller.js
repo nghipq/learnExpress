@@ -3,8 +3,10 @@ var shortid = require('shortid');
 
 module.exports.index = function(req, res) {
     var user = db.get('users').find({id: req.signedCookies.userId}).value();
+    var products = db.get('products').value();
     res.render('users/index', {
-        user: user
+        user: user,
+        products: products
     })
 }
 

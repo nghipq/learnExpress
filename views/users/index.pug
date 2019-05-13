@@ -8,8 +8,13 @@ block content
            input.form-control.mr-sm-2(value=q type="text", name="q")
            button.btn.btn-outline-success.my-2.my-sm-0 search   
         h2 Product List
-        ul.flex.flex-row
-        
+        ul.d-flex.flex-row
+          each product in products
+            li.d-flex.flex-column.justify-content-center.align-items-center.ml-5
+              h4= product.name
+              img(src= 'https://via.placeholder.com/200')
+              p= product.description
+              a(href="#")= product.price
     
     
           

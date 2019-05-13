@@ -37,6 +37,24 @@
       "description": "cat is an animal",
       "price": "1200",
       "id": "D_0KYjvBv"
+    },
+    {
+      "name": "dog",
+      "description": "dog is an animal",
+      "price": "1200",
+      "id": "nB8h1nwAk"
+    },
+    {
+      "name": "bird",
+      "description": "bird is an animal",
+      "price": "1200",
+      "id": "5g9M8a0iU"
+    },
+    {
+      "name": "chicken",
+      "description": "chicken is an animal",
+      "price": "1200",
+      "id": "1oW_14eE2"
     }
   ]
 }
