@@ -1,13 +1,15 @@
 extends ../layout/layout.pug
 
 block content
-    div(class="container")
+    .container
         h1= user.name
         a(href="/user/create") create
         form.form-inline.my-2.my-lg-0(action="/user/search", method="GET")
            input.form-control.mr-sm-2(value=q type="text", name="q")
            button.btn.btn-outline-success.my-2.my-sm-0 search   
         h2 Product List
+        ul.flex.flex-row
+        
     
     
           
