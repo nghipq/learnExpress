@@ -1,13 +1,20 @@
 extends ../layout/layout.pug
 
 block content
+  .container
     h1 User create
 
     if errors 
       each error in errors
-        .alert.alert-danger=error
-
-    form(action="/user/create", method="POST")
-        label Name 
-        input(type="text" name="name" value= values ? values.name : "")
-        button create
+        .alert.alert-danger=error    
+    form
+      .form-group
+        label(for='product-name') Name
+        input#product-name.form-control(type='text', placeholder='Enter Product Name')
+      .form-group
+        label(for='Description') Description
+        input#description.form-control(type='text', placeholder='...')
+      .form-group
+        label(for='price') Price
+        input#price.form-control(type='text', placeholder='$')
+      button.btn.btn-primary Create

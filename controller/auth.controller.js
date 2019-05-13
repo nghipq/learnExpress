@@ -31,3 +31,11 @@ module.exports.postLogin = function(req, res) {
     })
     res.redirect('/user')
 }
+
+module.exports.join = (req, res) => res.render('auth/join');
+module.exports.postJoin = function(req, res) {
+    req.body.id = shortid.generate();
+    req.body.password = md5(req.body.password);
+    db.get('users').push(req.body).write();
+    res.redirect('/auth/login');
+}

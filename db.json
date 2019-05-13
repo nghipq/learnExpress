@@ -8,15 +8,15 @@
     },
     {
       "name": "Nghi",
-      "id": "vyRlyaQWx"
+      "email": "nghi@gmail.com",
+      "password": "827ccb0eea8a706c4c34a16891f84e7b",
+      "id": "oucgNKR61"
     },
     {
       "name": "Nhat",
-      "id": "XjqnwxKkC"
-    },
-    {
-      "name": "Si",
-      "id": "t73JEGoBH"
+      "email": "nhat@gmail.com",
+      "password": "827ccb0eea8a706c4c34a16891f84e7b",
+      "id": "LO8e3Qu2R"
     }
   ]
 }

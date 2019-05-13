@@ -1,0 +1,15 @@
+extends ../layout/layout.pug
+
+block content
+    h1 Join
+    if errors 
+      each error in errors
+        .alert.alert-danger=error
+    form(action="/auth/join", method="POST")
+        label(for = name) Name 
+        input#email(type="text" name="name" value= values ? values.name : "")
+        label(for = email) Email 
+        input#email(type="email" name="email" value= values ? values.email : "")
+        label(for = password) Password 
+        input#password(type="password" name="password" value= values ? values.password : "")
+        button Join
