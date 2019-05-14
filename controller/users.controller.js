@@ -5,7 +5,7 @@ module.exports.index = function(req, res) {
     var user = db.get('users').find({id: req.signedCookies.userId}).value();
     
     var page = parseInt(req.query.page) || 1;
-    var perPage = 8;
+    var perPage = 6;
     
     var start = (page - 1) * perPage;
     var end = page * perPage;
