@@ -2,7 +2,7 @@ var dotenv = require('dotenv').config();
 
 var express = require('express');
 var app = express();
-var cookieParser = require('cookie-parser')
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var userRoute = require('./routes/users.route');

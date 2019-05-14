@@ -1,5 +1,8 @@
 var express = require('express');
+var multer  = require('multer')
+
 var router = express.Router();
+var upload = multer({ dest: './public/uploads/' })
 
 var controller = require('../controller/users.controller');
 
@@ -10,7 +13,9 @@ router.get('/', controller.index);
 router.get('/search', controller.search)
 
 router.get('/create', controller.create)
-
-router.post('/create', controller.postCreate)
+enctype="multipart/form-data"
+router.post('/create',
+    upload.single('img'),
+    controller.postCreate)
 
 module.exports = router
