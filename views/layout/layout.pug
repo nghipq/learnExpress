@@ -16,8 +16,9 @@ html(lang="en")
                 span.sr-only (current)
             li.nav-item
               a.nav-link(href='#') Link
-            li.nav-item
-              a.nav-link(href='#') Cart  
+            li.nav-item.d-flex.flex-row
+              a.nav-link(href='#') Cart
+              .d-flex.flex-column.justify-content-center.align-items-center.rounded-circle.bg-primary.text-white(style="width: 1.5rem; height: 1.5rem")= cart  
             li.nav-item
             if user
               a.nav-link(href="#")= user.name

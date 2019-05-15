@@ -2,12 +2,18 @@ var db = require('../db')
 
 module.exports.addToCart = function(req, res, next) {
     var productId = req.params.productId;
-    var sessionId = req.signedCookies.sessionId;
-
-    if(!sessionId) {
-        res.redirect('/');
+    var user = db.get('users').find({id: req.signedCookies.userId}).value();
+    var sessionId;
+    if(!user) {
+        sessionId = req.signedCookies.sessionId;
+        if(!sessionId) {
+            res.redirect('/products');
+            return
+        }
+    } else {
+        sessionId = userId;
         return;
-    }
+    }  
 
     var count =  db.get('sessions')
     .find({id: sessionId})
@@ -19,16 +25,5 @@ module.exports.addToCart = function(req, res, next) {
     .set('cart.' + productId, count + 1 )
     .write();
 
-    var cartCount = 0;
-    var items = db.get('sessions')
-    .find({id: sessionId})
-    .value()
-    .cart 
-
-    for(item in items) {
-        cartCount += items[item]
-    }
-
     res.redirect('/')
-;
 }

@@ -4,17 +4,7 @@ block content
   .container  
     a(href="./auth/login") Login
     a(href="./auth/join") Join
-    h1 Products
-       ul.row.list-unstyled
-          each product in products
-            li.col-sm-4.mb-3
-              .card.d-flex.flex-column.justify-content-center.align-items-center(style='width: 18rem; height: 26rem')
-                img.card-img-top(src= product.img , alt='...')
-                .card-body
-                h5.card-title= product.name
-                p.card-text(style="font-size: 1rem; text-align: center")= product.description
-                a(href="#" style="font-size: 0.8rem")= product.price
-                a.btn.btn-primary(style="width: 100%" href='/cart/add/' + product.id) ADD TO CART+
+    
 
 
 

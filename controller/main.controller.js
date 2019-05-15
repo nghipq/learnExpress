@@ -1,6 +1,6 @@
 var db = require('../db')
 
-module.exports.index = function(req, res) {
+module.exports.products = function(req, res) {
     var page = parseInt(req.query.page) || 1;
     var perPage = 6;
     
@@ -8,7 +8,7 @@ module.exports.index = function(req, res) {
     var end = page * perPage;
 
     var products = db.get('products').value().slice(start, end);
-    res.render('index', {
+    res.render('products', {
         products: products
     })
 }
