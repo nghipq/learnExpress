@@ -9,11 +9,9 @@ var cartRoute = require('./cart.route')
 
 var validate = require('../middleware/users.validate');
 
-router.get('/');
+router.get('/', controller.index);
 
 router.get('/search', controller.search);
-
-router.use('/cart', cartRoute)
 
 router.get('/create', controller.create)
 enctype="multipart/form-data"
