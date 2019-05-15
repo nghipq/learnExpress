@@ -3,7 +3,7 @@ var db = require('../db');
 module.exports = function(req, res, next) {
     var sessionId = req.signedCookies.sessionId;
     if(!sessionId) {
-        res.redirect('/products');
+        res.redirect('/');
         return
     }
 

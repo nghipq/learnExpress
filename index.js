@@ -7,19 +7,27 @@ var bodyParser = require('body-parser');
 
 var userRoute = require('./routes/users.route');
 var authRoute = require('./routes/auth.route');
+var cartRoute = require('./routes/cart.route');
+var cartCount = require('./middleware/cart.middleware')
 
-var authMiddleware = require('./middleware/auth.middleware')
+var authMiddleware = require('./middleware/auth.middleware');
+var sessionMiddleware = require('./middleware/session.middleware');
+var controller = require('./controller/main.controller')
 
 var port = 3000;
 
 app.use(cookieParser(process.env.SESSON_SECRET))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(sessionMiddleware);
+app.use(cartCount)
 
 app.set('views', './views');
 app.set('view engine', 'pug');
 
-app.get('/', (req, res) => res.render('index'));
+app.get('/', controller.index);
+
+app.use('/cart', cartRoute)
 
 app.use('/auth', authRoute)
 
