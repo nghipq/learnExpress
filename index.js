@@ -4,11 +4,14 @@ var express = require('express');
 var app = express();
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGO_URL);
 
 var userRoute = require('./routes/users.route');
 var authRoute = require('./routes/auth.route');
 var cartRoute = require('./routes/cart.route');
-var cartCount = require('./middleware/cart.middleware')
+var cartCount = require('./middleware/cart.middleware');
 
 var authMiddleware = require('./middleware/auth.middleware');
 var sessionMiddleware = require('./middleware/session.middleware');

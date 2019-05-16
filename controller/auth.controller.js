@@ -1,12 +1,12 @@
-var db = require('../db');
-var shortid = require('shortid');
+var User = require('../models/users.model')
 var md5 = require('md5');
 
 module.exports.login = (req, res) => res.render('auth/login');
-module.exports.postLogin = function(req, res) {
+module.exports.postLogin = async function(req, res) {
     var email = req.body.email;
-    var password = req.body.password
-    var user = db.get('users').find({email: email}).value();
+    var password = req.body.password;
+    var findUser = await User.find({email: email});
+    var user = findUser[0];
     var hashedPassword = md5(password)
     if(!user) {
         res.render('auth/login', {
@@ -26,16 +26,17 @@ module.exports.postLogin = function(req, res) {
         })
         return;
     }
-    res.cookie('userId', user.id, {
+
+    res.cookie('userId', user._id, {
         signed: true
     })
+
     res.redirect('/user')
 }
 
 module.exports.join = (req, res) => res.render('auth/join');
-module.exports.postJoin = function(req, res) {
-    req.body.id = shortid.generate();
+module.exports.postJoin = async function(req, res) {
     req.body.password = md5(req.body.password);
-    db.get('users').push(req.body).write();
+    await User.create(req.body)
     res.redirect('/auth/login');
 }

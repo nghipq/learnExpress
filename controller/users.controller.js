@@ -1,8 +1,9 @@
-var db = require('../db');
-var shortid = require('shortid');
+var User = require('../models/users.model')
+var Product = require('../models/products.model')
 
-module.exports.index = function(req, res) {
-    var user = db.get('users').find({id: req.signedCookies.userId}).value();
+module.exports.index = async function(req, res) {
+    var findUser = await User.find({_id: req.signedCookies.userId});
+    var user = findUser[0]
     
     var page = parseInt(req.query.page) || 1;
     var perPage = 6;
@@ -10,16 +11,16 @@ module.exports.index = function(req, res) {
     var start = (page - 1) * perPage;
     var end = page * perPage;
 
-    var products = db.get('products').value().slice(start, end);
+    var products = await Product.find();
     res.render('users/index', {
         user: user,
-        products: products
+        products: products.slice(start, end)
     })
 }
 
-module.exports.search = function(req, res) {
+module.exports.search = async function(req, res) {
     var q = req.query.q;
-    var products = db.get('products').value();
+    var products = await Product.find();
     var matchedProducts = products.filter(function(product) {
         return product.name.toLowerCase().indexOf(q.toLowerCase()) != -1;
     });
@@ -33,9 +34,8 @@ module.exports.create = function(req, res) {
     res.render('users/create');
 }
 
-module.exports.postCreate = function(req, res) {
-    req.body.id = shortid.generate();
+module.exports.postCreate = async function(req, res) {
     req.body.img = (req.file.destination + req.file.filename).slice(9)
-    db.get('products').push(req.body).write()
+    await Product.create(req.body)
     res.redirect('/user')
 }
