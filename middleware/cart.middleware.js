@@ -12,11 +12,11 @@ module.exports = function(req, res, next) {
     .find({id: sessionId})
     .value()
     .cart
-
+    
     for(item in items) {
         cartCount += items[item]
     }
-    
+
     res.locals.cart = cartCount
 
     next()
