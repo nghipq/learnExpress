@@ -3,7 +3,7 @@ var shortid = require('shortid');
 var db = require('../db');
 var Session = require('../models/sessions.model')
 
-module.exports = async function(req, res, next) {
+module.exports = function(req, res, next) {
     if (!req.signedCookies.sessionId) {
         var sessionId = shortid.generate()
         res.cookie('sessionId', sessionId, {
@@ -14,9 +14,9 @@ module.exports = async function(req, res, next) {
             cart: {}
         }).write()
 
-        await Session.create({
-            cart: {}
-        })
+        // await Session.create({
+        //     cart: {}
+        // })
     }
 
     next();
