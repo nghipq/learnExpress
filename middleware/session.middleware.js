@@ -15,9 +15,7 @@ module.exports = async function(req, res, next) {
         // }).write()
 
         await Session.create({
-            cart: {
-                null: 0
-            }
+            cart: []
         })
 
         var items = await Session.find()

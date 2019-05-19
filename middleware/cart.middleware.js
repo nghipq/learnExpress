@@ -1,24 +1,14 @@
-var db = require('../db');
 var Session = require('../models/sessions.model')
 
-module.exports = function(req, res, next) {
+module.exports = async function(req, res, next) {
     var sessionId = req.signedCookies.sessionId;
     if(!sessionId) {
         res.redirect('/');
         return
     }
 
-    // var cartCount = 0
-    // var items = db.get('sessions')
-    // .find({id: sessionId})
-    // .value()
-    // .cart
-    
-    // for(item in items) {
-    //     cartCount += items[item]
-    // }
-
-    var cartCount = 0
+    var session = await Session.findById(sessionId)
+    var cartCount = session.cart.length
 
     res.locals.cart = cartCount
 
