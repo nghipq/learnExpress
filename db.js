@@ -4,8 +4,6 @@ var adapters = new FileSync('db.json');
 db = low(adapters);
 
 db.defaults({
-  users: [],
-  products: [], 
   sessions: [],
 })
   .write();
